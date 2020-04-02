@@ -38,7 +38,18 @@ Unlike when we require core modules which are required in with the name of the m
 let Dog = require('./dog')
 ```
 
-## Resource
+## Event-Driven Architecture
+
+Node provides an `EventEmitter` class which we can access by requiring in the events core module:
+```js
+// Require in the 'events' core module
+let events = require('events');
+
+// Create an instance of the EventEmitter class
+let myEmitter = new events.EventEmitter();
+```
+
+## My Learning Resource
 
 - Codecademy
 - Lynda (via Linkedin Learning)
