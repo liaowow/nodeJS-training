@@ -49,6 +49,83 @@ let events = require('events');
 let myEmitter = new events.EventEmitter();
 ```
 
+Each event emitter instance has an `.on()` method which assigns a listener callback function to a named event. The `.on()` method takes as its first argument the name of the event as a string and, as its second argument, the listener callback function.
+
+Each event emitter instance also has an `.emit()` method which announces a named event has occurred. The `.emit()` method takes as its first argument the name of the event as a string and, as its second argument, the data that should be passed into the listener callback function.
+
+```js
+let newUserListener = (data) => {
+  console.log(`We have a new user: ${data}.`);
+};
+
+// Assign the newUserListener function as the listener callback for 'new user' events
+myEmitter.on('new user', newUserListener)
+
+// Emit a 'new user' event
+myEmitter.emit('new user', 'Lily Pad') //newUserListener will be invoked with 'Lily Pad'
+```
+
+## User Input/Output
+
+In the Node environment, the console is the terminal, and the `console.log()` method is a “thin wrapper” on the `.stdout.write()` method of the `process` object. `stdout` stands for standard output.
+
+```js
+process.stdout.write("I'm thinking of a number from 1 through 10. What do you think it is? \n(Write \"quit\" to give up.)\n\nIs the number ... ");
+```
+
+In Node, we can also receive input from a user through the terminal using the `stdin.on()` method on the process object:
+```js
+process.stdin.on('data', (userInput) => {
+  let input = userInput.toString()
+  console.log(input)
+});
+```
+
+Here, we were able to use `.on()` because under the hood `process.stdin` is an instance of `EventEmitter`. When a user enters text into the terminal and hits enter, a `'data'` event will be fired and our anonymous listener callback will be invoked. The `userInput` we receive is an instance of the Node `Buffer` class, so we convert it to a string before printing.
+
+## Errors
+
+The Node environment has all the standard JavaScript errors such as `EvalError`, `SyntaxError`, `RangeError`, `ReferenceError`, `TypeError`, and `URIError` as well as the JavaScript `Error` class for creating new error instances.
+
+Many asynchronous Node APIs use <i>error-first callback functions</i>: callback functions which have an error as the first expected argument and the data as the second argument. If the asynchronous task results in an error, it will be passed in as the first argument to the callback function. If no error was thrown, the first argument will be `undefined`.
+
+```js
+const errorFirstCallback = (err, data)  => {
+  if (err) {
+    console.log(`There WAS an error: ${err}`);
+  } else {
+     // err was falsy
+      console.log(`There was NO error. Event data: ${data}`);
+  }
+}
+```
+
+## Filesystem
+
+The Node `fs` core module is an API for interacting with the file system. It was modeled after the POSIX standard for interacting with the filesystem.
+
+Each method available through the `fs` module has a synchronous version and an asynchronous version. One method available on the `fs` core module is the `.readFile()` method which reads data from a provided file:
+```js
+const fs = require('fs');
+
+let readDataCallback = (err, data) => {
+  if (err) {
+    console.log(`Something went wrong: ${err}`);
+  } else {
+    console.log(`Provided file contained: ${data}`);
+  }
+};
+
+fs.readFile('./file.txt', 'utf-8', readDataCallback);
+```
+
+- We required in the `fs` core module.
+- We define an error-first callback function which expects an error to be passed as the first argument and data as the second. If the error is present, the function will print `Something went wrong: ${err}`, otherwise, it will print `Provided file contained: ${data}`.
+- We invoked the `.readFile()` method with three arguments:
+    1. The first argument is a string that contains a path to the file `file.txt`.
+    2. The second argument is a string specifying the file’s character encoding (usually `'utf-8'` for text files).
+    3. The third argument is the callback function to be invoked when the asynchronous task of reading from the file system is complete. Node will pass the contents of `file.txt` into the provided callback as its second argument.
+
 ## My Learning Resource
 
 - Codecademy
