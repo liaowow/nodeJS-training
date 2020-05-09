@@ -32,6 +32,20 @@ The `process.memoryUsage()` returns information on the CPU demands of the curren
   external: 8772 }
 ```
 
+`process.memoryUsage().heapUsed` will return a number representing how many bytes of memory the current process is using.
+
+The `process.argv` property holds an array of command line values provided when the current process was initiated:
+- The first element in the array is the absolute path to Node, which ran the process.
+- The second element in the array is the path to the file that’s running.
+- The following elements will be any command line arguments provided when the process was initiated.
+- Command line arguments are separated from one another with spaces.
+```js
+node myProgram.js testing several features
+```
+```js
+console.log(process.argv[3]); // Prints 'several'
+```
+
 ## Heap
 
 `Heap` can mean different things in different contexts: a heap can refer to a specific data structure, but it can also refer to the a block of computer memory.
