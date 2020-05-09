@@ -24,6 +24,14 @@ Node has a global process object with useful methods and information about the c
 
 The `process.env` property is an object which stores and controls information about the environment in which the process is currently running.
 
+The `process.memoryUsage()` returns information on the CPU demands of the current process. It returns a property that looks similar to this:
+```js
+{ rss: 26247168,
+  heapTotal: 5767168,
+  heapUsed: 3573032,
+  external: 8772 }
+```
+
 ## Heap
 
 `Heap` can mean different things in different contexts: a heap can refer to a specific data structure, but it can also refer to the a block of computer memory.
