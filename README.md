@@ -4,6 +4,18 @@ Node.js is a JavaScript runtime, or an environment that allows us to execute Jav
 
 A “runtime” converts code written in a high-level, human-readable, programming language and compiles it down to code the computer can execute.
 
+## The Node REPL
+
+`REPL` is a program that loops through 3 different states: 
+1. `read` state where the program reads input from a user, 
+2. `eval` state where the program evaluates the user’s input, and 
+3. `print` state where the program prints out its evaluation to a console. 
+
+Then it `loop`s through these states again.
+
+When you install Node, it comes with a built-in JavaScript REPL. You can access the REPL by typing the command `node` (with nothing after it) into the terminal and hitting `enter`.
+
+
 ## Process
 
 In computer science, a process is the instance of a computer program that is being executed.
