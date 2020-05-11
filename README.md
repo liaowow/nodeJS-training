@@ -246,3 +246,4 @@ server.listen(3000);
 
 - Codecademy
 - Lynda (via Linkedin Learning)
+- [Node.js use cases](https://www.simform.com/nodejs-use-case/)
