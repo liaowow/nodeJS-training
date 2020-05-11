@@ -244,6 +244,7 @@ server.listen(3000);
 
 ## Resource
 
-- Codecademy
 - Lynda (via Linkedin Learning)
+- Codecademy
 - [Node.js use cases](https://www.simform.com/nodejs-use-case/)
+- [Node.js Intro](https://nodejs.dev/)
