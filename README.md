@@ -242,7 +242,7 @@ server.listen(3000);
     - Every server on a given machine specifies a unique port so that traffic can be correctly routed.
 
 
-## My Learning Resource
+## Resource
 
 - Codecademy
 - Lynda (via Linkedin Learning)
