@@ -1,8 +1,10 @@
 # Overview
 
-Node.js is a JavaScript runtime, or an environment that allows us to execute JavaScript code outside of the browser. 
+Built on Chrome's V8 JavaScript engine, Node.js is an asynchronous event-driven JavaScript runtime, or an environment, that allows us to execute JavaScript code outside of the browser. 
 
 A “runtime” converts code written in a high-level, human-readable, programming language and compiles it down to code the computer can execute.
+
+A Node.js app is run in a single process, without creating a new thread for every request.
 
 ## The Node REPL
 
